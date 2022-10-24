@@ -16,6 +16,9 @@
           newParagraph.innerText = "This paragraph has been dynamically added by JavaScript!";
           this.mainContainerEl.append(newParagraph);
         }
+        clearParagraphs() {
+          this.mainContainerEl.remove("p");
+        }
       };
       module.exports = View2;
     }
@@ -25,4 +28,5 @@
   var View = require_view();
   var view = new View();
   view.addParagraph();
+  view.clearParagraphs();
 })();

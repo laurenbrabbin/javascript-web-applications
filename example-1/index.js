@@ -10,6 +10,6 @@ console.log('Hello from the developer console!');
 const add = require('./add');
 const multiply = require('./multiply');
 
-const sixteen = multiply(2, add(2, 2));
+const sixteen = multiply(4, add(2, 2));
 
 console.log(sixteen);
