@@ -1,7 +1,7 @@
 {
   "name": "notes-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "To complete this first task you'll need to:",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jest": "^29.2.1",
     "jest-environment-jsdom": "^29.2.1"
   }
 }
