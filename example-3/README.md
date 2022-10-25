@@ -36,3 +36,13 @@ You'll now test-drive a second button to remove the message from the page when t
    Add a new method hideMessage.
    Attach a new event listener to the hide button, which will listen for a click, and has a callback which will execute hideMessage.
 4. You should be able to open the web page in your browser and use the two buttons to show or remove the message.
+
+## Exercise 3
+
+1. Let's first add a text input to the web page:
+```html
+<input type="text" id="message-input" />
+```
+2. Modify the first test in messageView.test.js so that before clicking on the "show" button, it sets the HTML input's value to a message of your choice. This stands in for a user entering the message themselves. Assert that the text content of div#message is equal to this message.
+3. Modify the code of the MessageView class so this test passes.
+4. Reload the web page in the browser. You should be able to type in a message, and click the button to see this message appear.
