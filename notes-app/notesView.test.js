@@ -34,4 +34,38 @@ describe('Page view', () => {
     notesView.displayNotes()
     expect(document.querySelectorAll('div.note').length).toBe(2); 
   });
+  it('displays the users own message when the button is clicked', () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+
+    const notesModel = new NotesModel;
+    notesModel.addNotes('go shopping')
+    const notesView = new NotesView(notesModel);
+
+    const inputEl = document.querySelector('#new-note');
+    const buttonEl = document.querySelector('#add-note-button');
+
+    inputEl.value = 'test note'
+    buttonEl.click();
+
+    expect(document.querySelectorAll('div.note').length).toBe(2);
+    expect(document.querySelectorAll('div.note')[1].textContent).toEqual('test note')
+  })
+  it('clears the previous notes when a new note is added', () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+
+    const notesModel = new NotesModel;
+    notesModel.addNotes('go shopping')
+    const notesView = new NotesView(notesModel);
+
+    const inputEl = document.querySelector('#new-note');
+    const buttonEl = document.querySelector('#add-note-button');
+
+    inputEl.value = 'test note'
+    buttonEl.click();
+
+    inputEl.value = 'another test note'
+    buttonEl.click();
+
+    expect(document.querySelectorAll('div.note').length).toBe(3);
+  })
 })

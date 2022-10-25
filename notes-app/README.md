@@ -81,3 +81,25 @@ This class will:
 
 You'll have to research how an HTML class can be set to an element in JavaScript.
 
+
+
+## Challenge 5
+
+You'll need to:
+
+1. Add a new text input and button to the web page.
+2. Test-drive and implement the JS code that allows the user to input a new note title, click the button, and see the new note displayed on the page.
+
+## Challenge 6
+
+Exercise - clearing previous notes
+This task is going to be made slightly easier thanks to the fact all our note elements have the HTML class note, so we know which ones to remove from the page. To complete this task, you'll have to research how to remove all elements having the same class.
+
+In the test file notesView.test.js, add a new test case for which verifies that when displayNotes is called twice, there should still be the right number of notes from the model on the page.
+
+Watch this test fail, and update now the code of the displayNotes method to make it pass.
+
+## Challenge 7
+Bonus exercise - clearing the input
+
+1. It would also be nice if the text input would reset to an empty value after the user clicked the button. Use the .value property of the input element to reset it to a blank state.
