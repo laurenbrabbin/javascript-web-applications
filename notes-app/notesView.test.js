@@ -26,7 +26,7 @@ describe('Page view', () => {
     expect(document.querySelectorAll('div.note').length).toBe(1); 
   });
 
-  it('displays 1 paragraphs', () => {
+  it('displays 2 paragraphs', () => {
     const notesModel = new NotesModel;
     notesModel.addNotes('go shopping')
     notesModel.addNotes('walk dog')

@@ -29,6 +29,6 @@
   console.log("Hello from the developer console!");
   var add = require_add();
   var multiply = require_multiply();
-  var sixteen = multiply(2, add(2, 2));
+  var sixteen = multiply(4, add(2, 2));
   console.log(sixteen);
 })();

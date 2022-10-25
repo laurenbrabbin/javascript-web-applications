@@ -65,3 +65,19 @@ Questions
 2. Make sure npm run build is running.
 3. Open (or refresh) the web page — you should see the empty array of notes [] being logged in the console.
 4. How would you modify the previous diagram to reflect the changes you made?
+
+
+## Challenge 4
+
+Test-drive a new class NotesView, similar to the View class seen in the previous example.
+
+This class will:
+
+1. have a constructor
+   the model should be dependency-injected into it.
+2. have a method displayNotes which will:
+   get the list of notes from the model.
+   for each note, create a new div element on the page (with an HTML class "note").
+
+You'll have to research how an HTML class can be set to an element in JavaScript.
+
