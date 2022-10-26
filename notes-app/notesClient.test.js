@@ -16,4 +16,17 @@ describe('NotesClient class', () => {
       done();
     });
   });
+  it('calls fetch and adds a new note', (done) => {
+    const notesClient = new NotesClient();
+    
+    fetch.mockResponseOnce(JSON.stringify({
+      notes: ['This note is coming from the server', 'test note']
+    }));
+
+    notesClient.createNote((returnedDataFromApi) => {
+      expect(returnedDataFromApi.notes[1]).toBe('test note');
+
+      done();
+    })
+  });
 });

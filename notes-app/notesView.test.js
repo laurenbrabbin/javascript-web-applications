@@ -36,10 +36,14 @@
    });
    it('displays the users own message when the button is clicked', () => {
      document.body.innerHTML = fs.readFileSync('./index.html');
- 
+     
+     const client = {
+      loadNotes: () => []
+    }
+
      const notesModel = new NotesModel;
      notesModel.addNotes('go shopping')
-     const notesView = new NotesView(notesModel);
+     const notesView = new NotesView(notesModel, client);
  
      const inputEl = document.querySelector('#new-note');
      const buttonEl = document.querySelector('#add-note-button');
@@ -52,10 +56,13 @@
    })
    it('clears the previous notes when a new note is added', () => {
      document.body.innerHTML = fs.readFileSync('./index.html');
- 
+     const client = {
+      loadNotes: () => []
+    }
      const notesModel = new NotesModel;
      notesModel.addNotes('go shopping')
-     const notesView = new NotesView(notesModel);
+     
+     const notesView = new NotesView(notesModel, client);
  
      const inputEl = document.querySelector('#new-note');
      const buttonEl = document.querySelector('#add-note-button');
@@ -66,7 +73,7 @@
      inputEl.value = 'another test note'
      buttonEl.click();
  
-     expect(document.querySelectorAll('div.note').length).toBe(3);
+     expect(document.querySelectorAll('.note').length).toBe(3);
    })
    it('displays notes pulled from an API', () => {
     document.body.innerHTML = fs.readFileSync('./index.html');
@@ -77,12 +84,35 @@
 
     const notesModel = new NotesModel;
     const view = new NotesView(notesModel, client);
-    console.log(view.displayNotesFromApi())
 
     view.displayNotesFromApi(() => {
       expect(document.querySelectorAll('.note')[0].textContent).toBe('This note is coming from the server');
 
       done();
     })
+   })
+
+    it('adds a new note pulled from the POST API', () => {
+      document.body.innerHTML = fs.readFileSync('./index.html');
+      
+      const client = {
+        createNote: () => ['This note is coming from the server', 'test note'],
+        loadNotes: () => ['This note is coming from the server', 'test note']
+      }
+
+      const notesModel = new NotesModel;
+      const view = new NotesView(notesModel, client);
+  
+      const inputEl = document.querySelector('#new-note');
+      const buttonEl = document.querySelector('#add-note-button');
+  
+      inputEl.value = 'test note'
+      buttonEl.click()
+  
+      view.displayNotesFromApi(() => {
+        expect(document.querySelectorAll('.note')[1].textContent).toBe('test note');
+  
+        done();
+      })
+    })
   })
- })

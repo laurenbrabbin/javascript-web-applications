@@ -135,3 +135,18 @@ view.displayNotes();
 remember to mock the NotesClient class in the test — since this is a dependency of NotesView. If you're not sure of how to do this, you can review the guidance on mocking in Jest.
 
 3. Change the code in the main file so we call .displayNotesFromApi() straight away — the view will now immediately load notes from the server and display them, when the page is loaded.
+
+## Challenge 10
+
+1. Test-drive a new method createNote on the NotesClient class. This method should send a POST request to the notes backend to create a new note.
+
+2. We now want to update the NotesView class so that the new method client.createNote is called when the user submits the form — test-drive this feature. Remember, here again, to mock the dependency on NotesClient in this test.
+
+3. Make sure the view is "refreshed" with the newly created note, by calling displayNotes() again.
+
+After completing the exercise, you should be able to do the following in the browser:
+
+* type in and submit a new note.
+* see that new note being showed on the page.
+* you can also check the POST request to /notes logged in the console's Network tab.
+* if you refresh the whole page, that new note should also be loaded with the original ones - it means it's been saved correctly.
