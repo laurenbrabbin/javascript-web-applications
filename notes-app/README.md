@@ -107,3 +107,31 @@ Bonus exercise - clearing the input
 ## Challenge 8
 
 1. Test-drive and implement the class and method. The loadNotes method should accept one argument, which is a callback function. The function should use fetch to load data from the GET /notes endpoint, and call the given callback with the result.
+
+## Challenge 9 
+
+1. Change the constructor of NotesView so an instance of NotesClient can be dependency-injected into it - your main file should now look like this:
+
+```javascript
+// index.js
+// ...
+const client = new NotesClient();
+const model = new NotesModel();
+const view = new NotesView(model, client);
+```
+
+2. Test-drive a new method displayNotesFromApi() on the NotesView class - this method should:
+
+call loadNotes(callback) on the Client class.
+
+when the response data is received, set the list of notes on the model and call displayNotes():
+
+```javascript
+// This method is new — you'll need to add it to the model class
+model.setNotes(notes);
+view.displayNotes();
+```
+
+remember to mock the NotesClient class in the test — since this is a dependency of NotesView. If you're not sure of how to do this, you can review the guidance on mocking in Jest.
+
+3. Change the code in the main file so we call .displayNotesFromApi() straight away — the view will now immediately load notes from the server and display them, when the page is loaded.
