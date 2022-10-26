@@ -68,4 +68,21 @@
  
      expect(document.querySelectorAll('div.note').length).toBe(3);
    })
+   it('displays notes pulled from an API', () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+    
+    const client = {
+      loadNotes: () => ['This note is coming from the server']
+    }
+
+    const notesModel = new NotesModel;
+    const view = new NotesView(notesModel, client);
+    console.log(view.displayNotesFromApi())
+
+    view.displayNotesFromApi(() => {
+      expect(document.querySelectorAll('.note')[0].textContent).toBe('This note is coming from the server');
+
+      done();
+    })
+  })
  })

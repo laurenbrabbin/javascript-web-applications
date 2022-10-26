@@ -1,8 +1,12 @@
-const NotesModel = require('./notesModel')
-const NotesView = require('./notesView')
+const NotesModel = require('./notesModel.js')
+const NotesView = require('./notesView.js')
+const NotesClient = require('./notesClient.js')
 
+const client = new NotesClient();
 const model = new NotesModel();
-model.addNotes('This is an example note')
 
-notesView = new NotesView(model)
-notesView.displayNotes()
+const notesView = new NotesView(model, client);
+
+notesView.displayNotesFromApi()
+
+console.log(document.querySelectorAll('.note'))

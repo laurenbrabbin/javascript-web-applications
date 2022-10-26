@@ -1,4 +1,4 @@
-const NotesClient = require('./notesclient');
+const NotesClient = require('./notesclient.js');
 require('jest-fetch-mock').enableMocks()
 
 describe('NotesClient class', () => {
