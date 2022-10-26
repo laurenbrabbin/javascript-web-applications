@@ -1,7 +1,8 @@
 class NotesView {
-  constructor(model) {
+  constructor(model, client) {
     this.model = model;
-    this.mainContainerEl = document.querySelector('#main-container');
+    this.client = client;
+    
 
     this.buttonEl = document.querySelector('#add-note-button');
 
@@ -14,10 +15,11 @@ class NotesView {
   }
 
   newParagraph = (note) => {
+    const mainContainerEl = document.querySelector('#main-container');
     const newParagraph = document.createElement('div');
     newParagraph.textContent = note;
     newParagraph.className = 'note';
-    this.mainContainerEl.append(newParagraph);
+    mainContainerEl.append(newParagraph);
   }
 
   displayNotes(){
@@ -26,6 +28,23 @@ class NotesView {
     })
     this.model.getNotes().map(this.newParagraph);
   }
+
+  displayNotesFromApi(){
+    this.client.loadNotes(repoData => {
+      this.model.setNotes(repoData);
+      this.displayNotes();
+    })
+  }
 }
 
 module.exports = NotesView
+
+const NotesClient = require('./notesclient.js')
+const client = new NotesClient();
+
+const NotesModel = require('./notesmodel.js')
+const model = new NotesModel();
+
+const view = new NotesView(model, client);
+
+view.displayNotesFromApi();

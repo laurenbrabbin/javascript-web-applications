@@ -103,3 +103,7 @@ Watch this test fail, and update now the code of the displayNotes method to make
 Bonus exercise - clearing the input
 
 1. It would also be nice if the text input would reset to an empty value after the user clicked the button. Use the .value property of the input element to reset it to a blank state.
+
+## Challenge 8
+
+1. Test-drive and implement the class and method. The loadNotes method should accept one argument, which is a callback function. The function should use fetch to load data from the GET /notes endpoint, and call the given callback with the result.

@@ -68,4 +68,14 @@ describe('Page view', () => {
 
     expect(document.querySelectorAll('div.note').length).toBe(3);
   })
+  it('displays the notes from the API', () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+    const client = {
+      loadNotes: () => 'This note is coming from the server'
+    }
+    const notesModel = new NotesModel;
+    const notesView = new NotesView(notesModel, client);
+    notesView.displayNotesFromApi()
+    expect(notesView.displayNotesFromApi()).toBe('This note is coming from the server')
+  })
 })
