@@ -7,6 +7,7 @@ class NotesView {
     this.buttonEl = document.querySelector('#add-note-button');
 
     this.buttonEl.addEventListener('click', () => {
+      this.client.createNote(document.querySelector('#new-note').value)
       this.model.addNotes(document.querySelector('#new-note').value)
       const inputEl = document.querySelector('#new-note');
       inputEl.value = ''
@@ -32,8 +33,16 @@ class NotesView {
     this.client.loadNotes(notes => {
       this.model.setNotes(notes);
       this.displayNotes();
+    }, error => {
+      this.displayError();
     })
   }
+
+  displayError(){
+   document.getElementById('error-message').innerText = 'Oops, something went wrong!';
+   document.getElementById('main-container').innerText = '';
+  }
+
 }
 
 module.exports = NotesView

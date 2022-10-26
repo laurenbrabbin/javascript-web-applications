@@ -150,3 +150,10 @@ After completing the exercise, you should be able to do the following in the bro
 * see that new note being showed on the page.
 * you can also check the POST request to /notes logged in the console's Network tab.
 * if you refresh the whole page, that new note should also be loaded with the original ones - it means it's been saved correctly.
+
+## Challenge 11
+
+1. Test-drive a new method displayError on the NotesView class — this method should append an error message on the page, such as "Oops, something went wrong!"
+2. Modify the method loadNotes on the NotesClient class so it accepts a second argument: a callback function that will be called in case of an error making the HTTP request
+3. As shown on the fetch documentation, use .catch() to handle the case in which the request fails
+4. Use the new displayError method to display the error message in that case.

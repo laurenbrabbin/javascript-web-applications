@@ -35,10 +35,9 @@
      expect(document.querySelectorAll('div.note').length).toBe(2); 
    });
    it('displays the users own message when the button is clicked', () => {
-     document.body.innerHTML = fs.readFileSync('./index.html');
-     
      const client = {
-      loadNotes: () => []
+      loadNotes: () => [],
+      createNote: () => []
     }
 
      const notesModel = new NotesModel;
@@ -55,9 +54,9 @@
      expect(document.querySelectorAll('div.note')[1].textContent).toEqual('test note')
    })
    it('clears the previous notes when a new note is added', () => {
-     document.body.innerHTML = fs.readFileSync('./index.html');
      const client = {
-      loadNotes: () => []
+      loadNotes: () => [],
+      createNote: () => []
     }
      const notesModel = new NotesModel;
      notesModel.addNotes('go shopping')
@@ -76,8 +75,6 @@
      expect(document.querySelectorAll('.note').length).toBe(3);
    })
    it('displays notes pulled from an API', () => {
-    document.body.innerHTML = fs.readFileSync('./index.html');
-    
     const client = {
       loadNotes: () => ['This note is coming from the server']
     }
@@ -93,8 +90,6 @@
    })
 
     it('adds a new note pulled from the POST API', () => {
-      document.body.innerHTML = fs.readFileSync('./index.html');
-      
       const client = {
         createNote: () => ['This note is coming from the server', 'test note'],
         loadNotes: () => ['This note is coming from the server', 'test note']
@@ -115,4 +110,11 @@
         done();
       })
     })
+
+    it('displays error message', () => {
+      const notesModel = new NotesModel;
+      const notesView = new NotesView(notesModel);
+      notesView.displayError()
+      expect(document.getElementById('error-message').innerText).toBe('Oops, something went wrong!'); 
+    });
   })
