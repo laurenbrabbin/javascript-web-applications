@@ -157,3 +157,9 @@ After completing the exercise, you should be able to do the following in the bro
 2. Modify the method loadNotes on the NotesClient class so it accepts a second argument: a callback function that will be called in case of an error making the HTTP request
 3. As shown on the fetch documentation, use .catch() to handle the case in which the request fails
 4. Use the new displayError method to display the error message in that case.
+
+## Challenge 12
+
+We now want to use the same mechanism to handle network errors when the user tries to create a new note, since this is a different HTTP request.
+
+1. Use .catch() in the fetch request that creates a new note to handle the error (you may reuse the same method .displayError() from the View class).

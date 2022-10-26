@@ -7,7 +7,7 @@ class NotesClient {
     })
     .catch(error => errorCallback(error))
   }
-  createNote(note){ // send a POST request to the notes backend to create a new note.
+  createNote(note, errorCallback){ // send a POST request to the notes backend to create a new note.
     fetch('http://localhost:3000/notes', {
       method: 'POST',
       body: JSON.stringify({
@@ -18,9 +18,8 @@ class NotesClient {
       },
     })
     .then((response) => response.json())
+    .catch(error => errorCallback(error))
   }
 }
-
-module.exports = NotesClient
 
 module.exports = NotesClient
