@@ -117,4 +117,21 @@
       notesView.displayError()
       expect(document.getElementById('error-message').innerText).toBe('Oops, something went wrong!'); 
     });
+
+    it('resets the API notes', () => {
+      const client = {
+       loadNotes: () => [],
+       resetNotes: () => []
+      }
+ 
+      const notesModel = new NotesModel;
+      const notesView = new NotesView(notesModel, client);
+  
+      
+      const buttonEl = document.querySelector('#reset-notes-button');
+  
+      buttonEl.click();
+  
+      expect(document.querySelectorAll('div.note').length).toBe(0);
+    })
   })

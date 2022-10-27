@@ -5,6 +5,7 @@ class NotesView {
     this.mainContainerEl = document.querySelector('#main-container');
 
     this.buttonEl = document.querySelector('#add-note-button');
+    this.resetButtonEl = document.querySelector('#reset-notes-button');
 
     this.buttonEl.addEventListener('click', () => {
       const note = document.querySelector('#new-note').value
@@ -16,6 +17,13 @@ class NotesView {
       inputEl.value = ''
       this.displayNotes();
     });
+
+    this.resetButtonEl.addEventListener('click', () => {
+      console.log('button clicked')
+      this.client.resetNotes(() => {
+        this.displayNotesFromApi()
+      })
+    })
   }
 
   newParagraph = (note) => {
