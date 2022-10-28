@@ -27,6 +27,16 @@ class NotesClient {
       callback(data)
     })
   }
+  //emojiConvertor(text, callback){
+  //  fetch('https://makers-emojify.herokuapp.com/', {
+  //    method: 'POST',
+   //   text: JSON.stringify(text)
+  //  })
+  //  .then(response => response.json())
+  //  .then(data => {
+  //    callback(data)
+  //  })
+ // }
 }
 
 module.exports = NotesClient

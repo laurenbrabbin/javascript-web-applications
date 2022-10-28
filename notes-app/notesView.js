@@ -10,6 +10,8 @@ class NotesView {
     this.buttonEl.addEventListener('click', () => {
       const note = document.querySelector('#new-note').value
       
+      //this.client.emojiConvertor(note, response => console.log(response))
+
       this.client.createNote(note, () => {this.displayError()})
       this.model.addNotes(note)
       

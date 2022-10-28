@@ -43,4 +43,21 @@ describe('NotesClient class', () => {
       done();
     });
   });
+   
+  it('adds a new note and loads all notes', (done) => {
+    const client = new NotesClient();
+
+    fetch.mockResponseOnce(JSON.stringify({
+      content: "This is a note"
+    }));
+    
+    let newNoteFromAPI = 'This is a note'
+    client.createNote(newNoteFromAPI, (returnedDataFromApi) => {
+      expect(returnedDataFromApi).toEqual({
+        content: "This is a note"
+      });
+
+      done();
+    })
+  });
 });
